@@ -17,13 +17,10 @@
     </div>
 
     <p class="mx-2 mt-2" v-if="emptyList">Your list is empty ...</p>
-
-    <ul class="list-group mx-2 mt-3 col-3">
-        <list v-for="item in list"
-        :article="item"
-        :key="item.id"
+        <list
+        :list="list"
         ></list>
-    </ul>
+
 
 </div>
 

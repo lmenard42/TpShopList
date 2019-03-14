@@ -1,12 +1,17 @@
 var ComponentList = {
-    props: ['article'],
-    template: '<li class="list-group-item"><center> <div class="row">'
-     + '<input type="text" v-model="article.id" hidden>'
-     + '<input class="ml-2" type="checkbox" v-model="article.checked">'
-     + '<input v-model="article.text" type="text" class="ml-2">' 
-     + '<input v-if="article.checked" size="5" class="ml-2" type="text" v-model="article.prix">'
-     + '<button class="btn btn-danger ml-2">X</button>'
-     + '</div></center></li>'
+    props: ['list'],
+    template: '<ul class="list-group mx-2 mt-3 col-3"><li v-for="(item, index) in list" :key="index" class="list-group-item"><center> <div class="row">'
+     + '<input type="text" v-model="item.id" hidden>'
+     + '<input class="ml-2" type="checkbox" v-model="item.checked">'
+     + '<input v-model="item.text" type="text" class="ml-2">' 
+     + '<input v-if="item.checked" size="5" class="ml-2" type="text" v-model="item.prix">'
+     + '<button class="btn btn-danger ml-2" @click="deleteArticle(index)">X</button>'
+     + '</div></center></li></ul>',
+     methods:{
+        deleteArticle: function(id){
+            this.list.splice(id,1)
+        }
+    }
 }
 
 new Vue ({
@@ -28,7 +33,7 @@ new Vue ({
             this.list.push({id: this.id ,text: this.article, checked: this.checked, prix: this.prix})
             this.emptyList = false
             ++this.id
-        }
+        },
 
     }
 })
