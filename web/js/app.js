@@ -26,7 +26,8 @@ new Vue ({
         article: '',
         id: 0,
         checked: false,
-        prix: 0
+        prix: 0,
+        budget: '50'
     },
     methods: {
         addArticle: function(){
@@ -35,5 +36,14 @@ new Vue ({
             ++this.id
         },
 
+    },
+    computed:{
+        calcTotal: function (){
+            return this.list.reduce((acc, cur) => cur.checked ? acc += Number(cur.prix) : acc, 0)
+        },
+
+        alertBudget: function() {
+            return this.calcTotal > this.budget
+        }
     }
 })

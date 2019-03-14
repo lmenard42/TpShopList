@@ -11,16 +11,25 @@
 <div id="app">
     <h1> {{ title }} </h1>
 
+
+
     <div class="row mx-2">
         <input v-model="article" @keyup.enter="addArticle">
         <button class="btn btn-default mx-2" v-on:click="addArticle">Add</button>
     </div>
 
     <p class="mx-2 mt-2" v-if="emptyList">Your list is empty ...</p>
-        <list
-        :list="list"
-        ></list>
-
+    <list
+    :list="list"
+    ></list>
+    <div class="row mx-2 mt-2">
+        <h2>Budget : {{ budget }} euros</h2>
+        <h2 class="ml-3">Total : {{ calcTotal }} euros</h2>
+    </div>
+    
+    <div class="alert alert-danger" role="alert" v-if="alertBudget">
+            you are out of budget !
+    </div>
 
 </div>
 
