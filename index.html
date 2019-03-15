@@ -23,8 +23,8 @@
     :list="list"
     ></list>
     <div class="row mx-2 mt-2">
-        <h2>Budget : {{ budget }} euros</h2>
-        <h2 class="ml-3">Total : {{ calcTotal }} euros</h2>
+        <h2>Budget : <input v-model="budget" size="2"> €</h2>
+        <h2 class="ml-3 mt-1">Total : {{ calcTotal }} €</h2>
     </div>
     
     <div class="alert alert-danger" role="alert" v-if="alertBudget">
